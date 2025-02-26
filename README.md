@@ -1,1 +1,1 @@
-# Codes of Namaste React
+# Codes of Namaste React by Akshay Saini
