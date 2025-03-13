@@ -1,36 +1,29 @@
-
-    // Hello World Code Using JavaScript
-    // const heading = document.createElement("h1");
-    // const root = document.getElementById("rootdiv");
-    // heading.innerHTML = "Hello World from JavaScript !"
-    // root.appendChild(heading);
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 
-    // Hello World Code using React 
-    // const heading = React.createElement("h1",{id: "heading"},"Hello World from React JS");
-    // const rootdiv = ReactDOM.createRoot(document.getElementById("rootdiv"));
-    // rootdiv.render(heading);    
+// JSX
+const jsxHeading = <h1 id ="heading">This is Namaste React Course by JSX header</h1>;
 
-    // console.log(heading); // Gives an Object  (React Element is JavaScript Object )
+const rootdiv = ReactDOM.createRoot(document.getElementById("rootdiv"));
 
-    // Creating Nested div's and headers using React
-    // <div id= parent>
-    //     <div id = child1>
-    //         <h1> Hey this is an h1 tag</h1>
-    //         <h2> Hey this is an h2 tag</h2>
-    //     </div>
-    //     <div id = child2>
-    //         <h1> Hey this is an h1 tag</h1>
-    //         <h2> Hey this is an h2 tag</h2>
-    //     </div>
-    // </div>
+rootdiv.render(jsxHeading);
 
-    // ***Note ---> Always keep the source code of whatever library you are importing before the source 
-    // code of the place where you have implemented that library.
+// Component Composition 
 
-    // React Element is JavaScript Object 
+const FirstComponent = () => {
+    return (<h1 id ="heading">Namaste React First Functional Component</h1>);
+};
 
-    const heading2 = React.createElement("div",{id:"parent"},[React.createElement("div",{id:"child1"},[React.createElement("h1",{},"Hey this is an h1 tag"),React.createElement("h2",{},"Hey this is an h2 tag")]),React.createElement("div",{id:"child2"},[React.createElement("h1",{},"I am an h1 tag")],React.createElement("h2",{},"I am an h2 tag"))]);
-    const rootdiv = ReactDOM.createRoot(document.getElementById("rootdiv"));
-    rootdiv.render(heading2);
-    
+const SecondComponent = () => {
+    return(
+   <div>
+    <FirstComponent/> 
+    <h2 id = "heading">Namaste React Second Component</h2>
+    <FirstComponent/>
+   </div>
+
+);
+};
+
+rootdiv.render(<SecondComponent/>);
