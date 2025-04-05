@@ -23,8 +23,11 @@
 
 **Note --> Any Code that can be automatically generated SHOULD NOT be pushed to GitHub**
 
+# Episode-02 | Igniting our App 
 
-# Episode - 03 
+- Important Git Commands ---> git add . ---> git commit -m "Commit Message" ---> git push origin main
+
+# Episode-03 | Laying the foundation
 
 - Instead of writing commands multiple times in terminal for build, we can write scripts in package.json in scripts node to start our project and build for dev and prod builds
 
@@ -91,6 +94,157 @@
 
 - For Front End Development **Wireframe** is the first and foremost important thing
 
-- 
+- Inline CSS is given as a JavaScript Object
+-For Example : const styleCard = {backgroundColor: "yellow"}
+
+- What is Props (Properties) in React ?
+
+- Props (short for "Properties") in React are used to pass data from a parent component to a child component. They make components reusable and dynamic. Props are read-only and cannot be modified inside the child component
+
+- **Passing  a Prop to a component is just like passing an argument to a function**
+
+- For Dynamic Data Population we are going to use Props in a component
+
+- What is Config Driven UI ?
+
+- Controlling UI using the Data or Config which comes from Backend is called Config Driven UI
+
+ - What is Optional Chaining in React ?
+
+ - Optional Chaining (?.) is a JavaScript ES11 (ECMAScript 2020) feature that helps safely access deeply nested object properties without causing errors if a property is null or undefined
+
+- Where to Use Optional Chaining in React?
+
+-  API responses (data?.property)
+- Props (props?.value)
+- State variables (state?.key)
+- Arrays (array?.[0]?.property)
+- Event handlers (event?.target?.value)
+
+- Why is the key Prop Necessary in .map()?
+
+- React uses keys to identify which elements have changed, been added, or removed.
+
+- Without keys, React re-renders the entire list, leading to performance issues.
+
+- With keys, React can efficiently update only the changed items, improving performance. 
+
+- **Writing a key is necessary while using the map function for performance optimisation of the code**
+
+- **Never use Index as a Key inside map function**
+
+# Episode-05 | Let's Get Hooked
+
+- The beauty of using a framework or a library is to make developer experience easy. To write less code and do more on the web page
+
+- The best industry practice is to make separate files for separate components instead of writing the whole code in a single file
+
+- *Note ---> Before importing a component, we need to export that component in the component.js file. For Example - (export default ***Component***;)
+
+- Best Industry Practices - Never put any Hard coded data (String) in the components Folder. They should be put inside utilities (utils)
+
+- **A single module or component.js file cannot have multiple default exports. For this purpose comes Named Export. Example - export const Header = () => {return <h1>Welcome to TummyKart!</h1>;};**
+
+
+- Types of Imports and Exports in React 
+
+
+-  Default Export/Import
+
+export default Component;
+import Component from "path";
+
+- Named Export/Import - Used for Exporting multiple things from the same file. Named Export is imported by writing inside the curly braces ({ }).
+**For Example - import { Header, Footer } from "./components/Header";**
+
+- export const Component;
+import {Component} from "path";
+
+- Best practice is to use default export unless there are multiple components needed to be exported.
+
+- **Ques** - Can I use a default export along with a named export?
+For example- 
+
+export const Header=()=>{return()};
+
+export default Header;
+
+- 📌 Exporting in Same File:
+
+const Header = () => <h1>Welcome!</h1>;
+
+- export { Header };  // Named export
+- export default Header; // Default export
+
+- 📌 Importing in Another File:
+
+- import Header, { Header as NamedHeader } from "./components/Header";
+
+- **Why React is Fast ?** 
+- React is Fast and Efficient in DOM Manipulation to maintain Data and UI layer to be consistent with each other.
+
+- State Variable ? - Super Powerful Variable - with the use of React Hooks(which is a normal JS function which is prebuilt)
+
+- React Hooks ?
+
+- Normal JS utility function 
+- Two important React Hooks 
+- useEffect()
+- useState() -  Used to generate Superpowerful State Variables in react. Needs to be imported before use inside a component like (import {useState} from "react";).
+Why is it called a State Variable ? - because it maintains the state of component.
+- How to create a State Variable ?
+
+- const [variableName, setvariableName] = useState(ValueTobePassed);
+
+- useState() returns an Array.We can also write the above code like below (Array Destructuring) -
+
+- const arr = useState(ValueTobePassed);
+
+- const variableName = arr[0];
+
+- const setvariableName = arr[1];
+
+- **Whenever a StateVariable updates, React re-renders the components.**
+
+- Reconciliation Algorithm (React Fiber) - Reconciliation is the process React uses to efficiently update the Actual DOM by comparing the new Virtual DOM with the previous Virtual DOM and applying only the necessary changes. ***For more Details - https://github.com/acdlite/react-fiber-architecture ***
+
+- Diffing Algorithm - When the state changes, React compares the new Virtual DOM with the previous one.
+
+- Actual DOM vs Virtual DOM in React
+
+- 1️⃣ What is the Actual DOM?
+
+- The Actual DOM (Document Object Model) is the standard representation of the UI elements in the browser.
+
+- Manipulating the Actual DOM is slow because every change requires the browser to repaint and reflow the page.
+
+- Example: If you update a single item in a list, the browser re-renders the entire list instead of just updating that one item.
+
+- 📌 Limitations of the Actual DOM:
+
+- Slow updates due to re-rendering the entire page.
+
+- Performance issues in large applications.
+
+- Increased memory usage.
+
+- 2️⃣ What is the Virtual DOM?
+
+- The Virtual DOM (VDOM) is a lightweight copy of the Actual DOM that React keeps in memory.
+
+- 📌 How Virtual DOM Works:
+
+- React creates a virtual representation of the UI in memory.
+
+- When the state changes, React compares the new Virtual DOM with the previous one (using a process called "diffing").
+
+- React updates only the changed parts of the Actual DOM instead of re-rendering everything.
+
+- 🚀 Advantages of Virtual DOM:
+- ✅ Faster updates – React only updates necessary parts of the UI.
+- ✅ Efficient rendering – Uses "reconciliation" to apply minimal changes.
+- ✅ Better performance – Reduces the number of direct updates to the Actual DOM.
+
+- **React uses the Virtual DOM (VDOM) to improve performance by minimizing direct interactions with the Actual DOM.**
 
 
