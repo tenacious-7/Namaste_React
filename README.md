@@ -171,7 +171,7 @@ export default Header;
 
 - 📌 Exporting in Same File:
 
-const Header = () => <h1>Welcome!</h1>;
+const Header = () => <_h1>Welcome!<_/h1>;
 
 - export { Header };  // Named export
 - export default Header; // Default export
@@ -248,3 +248,105 @@ Why is it called a State Variable ? - because it maintains the state of componen
 - **React uses the Virtual DOM (VDOM) to improve performance by minimizing direct interactions with the Actual DOM.**
 
 
+# Episode-06 | Exploring the World
+
+- Monolith Architecture Vs Microservices Architecture
+
+- A **monolithic architecture** is a single unified codebase where all features and components of an application (like UI, business logic, database access) are tightly coupled and run as a single service.
+
+- ✅ Characteristics: 
+- One large codebase
+- Deployed as a single unit
+- All modules are tightly integrated
+
+- A **microservices architecture** splits the application into independent, loosely coupled services, each responsible for a specific feature or business logic. These services communicate via APIs (typically REST).
+
+- ✅ Characteristics:
+- Each service is independently deployable
+- Services can use different languages/technologies
+- Better modularity and separation of concerns
+
+- Different Microservices run on their own specified ports. Atlast all these ports can be mapped to Domain name.
+
+-  **How do different micorservices connect with each other ?**
+
+- 🛣 Step-by-Step: How it all works (like a relay team 🏃‍♂️)
+1. ✅ User makes a request
+👉 You open the TummyKart app and click “Order Now”.
+
+2. 🌐 API Gateway receives your request
+👉 Think of this as the front desk — it accepts your order and decides which service should handle it.
+
+Example: If you're placing an order → it forwards it to Order Service
+
+3. 🔁 Microservices talk to each other
+👉 The Order Service needs more info before placing an order:
+
+It talks to Restaurant Service to check menu & prices
+
+It calls User Service to get your delivery address
+
+Then it calls Payment Service to handle payment
+
+📞 These calls are made using:
+
+REST APIs (just like how browsers talk to websites)
+
+or gRPC (faster communication style for backend-to-backend)
+
+4. 📢 Some services emit messages
+👉 After payment is done, Payment Service doesn’t call Notification directly.
+
+Instead, it sends a message like:
+
+“Payment Success for Order #123”
+
+Then, Notification Service listens for this and sends you a confirmation email or SMS.
+
+This is called event-based or asynchronous communication.
+
+5. 🗄️ Each service has its own database
+User Service → user database
+
+Restaurant Service → menu database
+
+Order Service → order database
+
+👉 They don’t share databases, so they don’t mess up each other’s data.
+
+- Two Approaches how UI Applications fetch the data from Backend 
+
+1. Page Loads --> API Hits --> Render the Data
+
+2. Page Loads --> Just Render UI ---> API Hits --> Re-render the UI with API DATA
+
+***Note --> Approach Second is best because it gives better UX (User Experience)***
+
+- React's render cycles are very fast, it has one of the best and fastest rendering mechanism.
+
+- Arguments (Function Call) vs Parameters (Function Definition)
+
+- ![alt text](image-1.png)
+
+- useEffect(callbackFunction, Dependencies) - After the rendering of body component the callback function of useEffect is called.
+
+**For example - useEffect(()=>{console.log("useEffect is called")}, []);**
+
+- If you have to do something after the rendering component then we have to write useEffect();
+
+- **Using Shimmer UI we load a fake page (skeleton) until we get the real data from the API's.** Used for Better User Experience
+
+- Conditional Rendering - The Rendering which is done on the basis of a condition is called Conditional Rendering.
+
+- **Whenever state variable changes, React will re-render the whole component**
+
+- ***Why, How, When should be the questions for Learning anything New***
+
+- onChange={e => setSearchQuery(e.target.value)} is required in an input box for proper working.
+
+- **Whenever state variables update, react triggers a reconciliation cycle (re-renders the component)**
+
+- Fetch/XHR in the network tab of inspect elements gives us all the API Calls
+
+
+// Use Update API and build infinite scroll for TummyKart App
