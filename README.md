@@ -349,4 +349,84 @@ Order Service → order database
 - Fetch/XHR in the network tab of inspect elements gives us all the API Calls
 
 
-// Use Update API and build infinite scroll for TummyKart App
+**// Use Update API and build infinite scroll for TummyKart App**
+
+# Episode-07 | Finding the Path
+
+- If no dependency array => useEffect is called on every render
+
+- if dependency array is empty = [] => useEffect is called on initial render(just once)
+
+- If dependency array is [exampledependency] => useEffect is called everytime exampledependency is updated.
+
+- **Never Create Hooks outside of the body of component**
+
+- **Always call useState() on the top where component starts to avoid inconsistency**
+- **Never Use Hooks inside an if else Block(condition), foreach loop, functions**
+
+
+- For Developing Routes, we have to create Routing **Configuration-(Information that tell browser router what will happen on a specific path).**
+
+- Two important components provide by react-router-dom are - 
+
+1. createBrowserRouter
+
+2. RouterProvider - Provides the routing configuration to our App
+
+- Whenever a function starts with "use" --> Hooks
+
+- **useRouteError() is a Hook Provided by react-router-dom for Detailing the Errors**
+
+- 🚸 What Are Children Routes?
+Children routes allow you to nest routes inside a layout. Think of it like a parent-child relationship:
+
+🧭 / → Home or Main Layout
+
+📄 /about → a page inside the main layout
+
+📄 /contact → another child page
+
+- Outlet is like a placeholder for rendering nested/child routes.
+
+- **Never ever use an Anchor Tag in react because it refreshes the whole new page. (Navigates to a new page only by Reloading the Whole Page)**
+
+- What is Link?
+The <Link> component is like an anchor tag (<a>) but made for React Router. It enables client-side routing, meaning navigation is handled by JavaScript (no full page reload).
+
+- 🧠 What Happens Behind the Scenes?
+Instead of doing a full reload like <a href="/about">About</a>,
+<Link to="/about">About</Link> updates the URL and component using the routing system.
+
+Makes the app faster and smoother. ✨
+- **Link is a component which is given to us by react-router-dom and behind the scenes Link is using Anchor Tag in HTML of browsers.**
+- React Applications are called as (SPA) Single Page Application.
+
+-  🧠 What is an SPA?
+A Single Page Application is a web app that loads a single HTML page and dynamically updates the content without refreshing the entire page as the user navigates.
+
+- Routing in Web Apps
+
+- Client Side Routing - The app loads once. When users click links, JavaScript updates the URL and dynamically renders components, without reloading the page.
+
+- Server Side Routing - Every time a user clicks a link, the browser sends a request to the server. The server processes the request and sends back a new HTML page.
+
+- 🔄 Why Client-Side Routing is Awesome
+✅ Faster transitions
+✅ Feels like a real app
+✅ Reduces server load
+✅ Easy to handle private routes, lazy loading, etc.
+
+- 📌 What is Dynamic Routing?
+Dynamic routing means the URL path can change based on a variable, like a product ID, username, blog slug, etc.
+
+Example:
+
+1)- /user/123 → Show user with ID 123
+
+2)- /product/shoes → Show the product page for "shoes"
+
+- How to Implement --> path="/user/:id"
+
+- 🔍 What is useParams?
+- useParams is a hook provided by React Router that lets you access the dynamic pieces of the URL (called route parameters) in a React component.
+
